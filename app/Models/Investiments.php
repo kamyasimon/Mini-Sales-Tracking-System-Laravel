@@ -9,13 +9,23 @@ class Investiments extends Model
 {
     protected $table = "investiments";
     protected $fillable = [
-        'capital',
         'workingcapital',
         'withdraws',
         'sales',
         'profits',
-        'fkuser'
+        'fkuser',
+        'fkcompany',
+        'fkadmin'
 		
     ];
-   
+    public function User()
+    {
+        return $this->belongsTo('App\Models\User','fkadmin');
+    }
+
+    public function Companies()
+    {
+        return $this->belongsTo('App\Models\Companies','fkcompany');
+    }
+    
 }

@@ -15,15 +15,16 @@ class CreateInvestimentsTable extends Migration
     {
         Schema::create('investiments', function (Blueprint $table) {
             $table->id();
-            $table->integer('capital')->default(0);
             $table->integer('workingcapital')->default(0);
             $table->integer('withdraws')->default(0);
             $table->integer('sales')->default(0);
             $table->integer('profits')->default(0);
 
              /////FK///////
-             $table->integer('fkuser')->unsigned();
-             $table->foreign ('fkuser')->references('id')->on('users');
+             $table->integer('fkcompany')->unsigned();
+             $table->foreign ('fkcompany')->references('id')->on('companies');
+             $table->integer('fkadmin')->unsigned();
+             $table->foreign ('fkadmin')->references('id')->on('users');
             $table->timestamps();
         });
     }

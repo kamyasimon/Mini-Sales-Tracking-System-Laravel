@@ -12,7 +12,16 @@ class Expenses extends Model
         'company',
         'purpose',
         'amount',
-        'fkuser'
+        'fkuser',
+        'fkcompany'
 		
     ];
+
+    public function Sales(){
+        return $this->hasMany('App\Models\Sales','id');
+      }
+
+      public function Companies(){
+        return $this->belongsTo('App\Models\Companies','fkcompany');
+      }
 }

@@ -9,14 +9,28 @@ class Stocks extends Model
 {
     protected $table = "stocks";
     protected $fillable = [
+       'stockid',
+        'batch',
+        'stockkey',
         'itemstocked',
         'stockquantity',
         'stockamount',
         'stockprice',
         'saleprice',
-        'projectedsales',
-        'fkuser'
+        'projectedprofits',
+        'fkcompany',
+        'availablestock'
 		
     ];
+
+    public function Companies(){
+              return $this->belongsTo('App\Models\Companies','fkcompany');
+           }
+      public function Products(){
+            return $this->belongsTo('App\Models\Products','itemstocked');
+         }
+         public function Batches(){
+            return $this->belongsTo('App\Models\Batches','batch');
+         }
 }
 

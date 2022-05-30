@@ -17,7 +17,7 @@
   <tbody>
       @foreach($expenses as $expense)
     <tr>
-    <td>{{$expense->company}}</td>
+    <td>{{$expense->Companies->companyname}}</td>
       <th>{{$expense->purpose}}</th>
       <td>{{$expense->amount}}</td>
     </tr>
@@ -42,13 +42,16 @@
       {{csrf_field()}}
             <div class="modal-body">
           <select class="form-control mb-2" name="company" id="">
-          <option value="CZNKI">CZNKI</option>
-            <option value="GB SACCO">GB SACCO</option>
+          <option value="">Select Company</option>
+            @foreach($companies as $company)
+         
+            <option value="{{$company -> id}}">{{$company -> companyname}}</option>
+            @endforeach
           </select>
 
-                    <input class="form-control mb-2" type="text" name="purpose" id="" placeholder="Enter expense purpose ellaboratively->item,Quantity">
+                    <input class="form-control mb-2" type="text" name="purpose" id="" placeholder="Enter expense purpose ellaboratively->item,Quantity" required>
                    
-                    <input class="form-control mb-2" type="number" name="amount" id="" min='0' placeholder="Input Expense Amount">
+                    <input class="form-control mb-2" type="number" name="amount" id="" min='0' placeholder="Input Expense Amount" required>
                      </div>
             <div class="modal-footer">
             <button class="btn btn-success" type="submit">Spend</button>

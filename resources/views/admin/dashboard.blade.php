@@ -8,26 +8,32 @@
   <thead>
     <tr>
      
-      <th scope="col">Capital</th>
+    <th scope="col">Company</th>
       <th scope="col">Working Capital</th>
       <th scope="col">Withdraws</th>
       <th scope="col">Sales</th>
       <th scope="col">Profits</th>
-      <th scope="col"> <a href="{{url('initiate')}}">  <button class="btn btn-block btn-success">Initiate</button></a> </th>
-      <th scope="col">  <button class="btn btn-block btn-success" data-bs-toggle="modal" data-bs-target="#addcapital">Add Capital</button> </th>
+      <th >Created</th>
+      <th >Previous Update</th>
+    
     </tr>
   </thead>
   <tbody>
-      @foreach($investiments as $investiment)
-    <tr>
-      <th >{{$investiment->capital}}</th>
-      <td>{{$investiment->workingcapital}}</td>
-      <td>{{$investiment->withdraws}}</td>
-      <td>{{$investiment->sales}}</td>
-      <td>{{$investiment->profits}}</td>
-    </tr>
-    @endforeach
    
+      @foreach($investiments as $investiment)
+        @if(Auth::user()->id == $investiment->fkadmin || Auth::user()->fkrole == 2 )
+      <tr>
+      <td>{{$investiment->Companies->companyname}}</td>
+        <td>{{$investiment->workingcapital}}</td>
+        <td>{{$investiment->withdraws}}</td>
+        <td>{{$investiment->sales}}</td>
+        <td>{{$investiment->profits}}</td>
+        <td>{{$investiment->created_at}}</td>
+        <td>{{$investiment->updated_at}}</td>
+      </tr>
+      @endif
+    @endforeach
+ 
   </tbody>
 </table>
     </div>

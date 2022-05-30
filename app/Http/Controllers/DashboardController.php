@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function dashboard(){
         $investiments = Investiments::all();
            // dd($investiments);
-           if(Auth::User()->fkrole == 2 ){
+           if(Auth::User()->fkrole == 2 || Auth::User()->fkrole == 3 ){
             return view('admin.dashboard',compact('investiments'))->with('success','You are now logged in as '. Auth::user()->name);
            }elseif (Auth::User()->fkrole == 3 ) {
               return redirect('sales')->with('success','You are now logged in as '. Auth::user()->name);
@@ -31,7 +31,7 @@ class DashboardController extends Controller
     
     
     public function initiate(){
-
+        
             $initiate=Investiments::create([
                 'fkuser'=>Auth::user()->id,
             ]);
@@ -39,7 +39,7 @@ class DashboardController extends Controller
     }
 
     /////////////////ADD CAPITAL
-    public function addcapital(Request $request){
+   /* public function addcapital(Request $request){
         $currentcapitalx = Investiments::where('fkuser',1)->get();
         // dd($currentcapitalx);
          $currentcapital=$currentcapitalx[0]->capital;
@@ -49,5 +49,5 @@ class DashboardController extends Controller
         ]);
 
         return back()->with('success','Capital Updated Successfully');
-    }
+    }*/
 }

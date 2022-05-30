@@ -26,6 +26,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'dashboard']);
 Route::get('/initiate',[App\Http\Controllers\DashboardController::class, 'initiate']);
 
+/////COMPANIES/////////
+Route::get('/companies',[App\Http\Controllers\CompaniesController::class, 'companies']);
+Route::post('/addcompany',[App\Http\Controllers\CompaniesController::class, 'addcompany']);
+
+/////PRODUCTS/////////
+Route::get('/products',[App\Http\Controllers\ProductsController::class, 'products']);
+Route::post('/addproduct',[App\Http\Controllers\ProductsController::class, 'addproduct']);
+
+/////CREATE BATCH/////////
+
+Route::post('/addstockbatch',[App\Http\Controllers\BatchesController::class, 'addstockbatch']);
+
+
 /////////////////////////ADD CAPITAL 
 Route::post('/addcapital',[App\Http\Controllers\DashboardController::class, 'addcapital']);
 
@@ -38,6 +51,8 @@ Route::get('/sales',[App\Http\Controllers\SalesController::class, 'sales']);
 Route::post('/addsale',[App\Http\Controllers\SalesController::class, 'addsale']);
 Route::get('/delivered/{id}',[App\Http\Controllers\SalesController::class, 'delivered']);
 Route::get('/paid/{id}',[App\Http\Controllers\SalesController::class, 'paid']);
+Route::get('/handedover/{id}',[App\Http\Controllers\SalesController::class, 'handedover']);
+
 
 /////////////////////////ADD EXPENSES
 Route::get('/expenses',[App\Http\Controllers\ExpensesController::class, 'expenses']);

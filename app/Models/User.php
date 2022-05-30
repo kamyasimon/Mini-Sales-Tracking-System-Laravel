@@ -43,8 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-  //  public function Sales(){
+    public function Companies()
+    {
+        return $this->hasOne('App\Models\Companies','id');
+    }
 
-  //      return $this->hasMany('App\Models\Sales','id');
-  //  }
+    public function Investiments()
+    {
+        return $this->hasOne('App\Models\Investiments','id');
+    }
 }

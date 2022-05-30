@@ -5,3 +5,4 @@
         @include('includes.partials.success')
         </div>
 </div>
+<hr>

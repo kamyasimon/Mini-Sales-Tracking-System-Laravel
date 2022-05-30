@@ -15,15 +15,19 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('itemstocked');
+            $table->string('stockid');
+            $table->string('batch');
+            $table->string('stockkey');
+            $table->integer('itemstocked');
             $table->integer('stockquantity');
             $table->integer('stockamount');
             $table->integer('stockprice');
             $table->integer('saleprice');
-            $table->integer('projectedsales');
+            $table->integer('projectedprofits');
+            $table->integer('availablestock')->default(0);
              /////FK///////
-             $table->integer('fkuser')->unsigned();
-             $table->foreign ('fkuser')->references('id')->on('users');
+             $table->integer('fkcompany')->unsigned();
+             $table->foreign ('fkcompany')->references('id')->on('companies');
             $table->timestamps();
         });
     }

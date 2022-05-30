@@ -11,8 +11,9 @@ class Sales extends Model
 {
     protected $table = "sales";
     protected $fillable = [
-        'company',
         'itemsold',
+        'batch',
+        'stockid',
         'quantitysold',
         'amountsold',
         'customername',
@@ -21,7 +22,9 @@ class Sales extends Model
         'expenditureamount',
         'totalprice',
         'orderstatus',
-        'fkuser'
+        'fkuser',
+        'fkcompany',
+        'handedover'
 		
     ];
 
@@ -29,4 +32,13 @@ class Sales extends Model
 //
   //      return $this->hasMany('App\Models\User','fkuser');
  //   }
+ public function Companies(){
+  return $this->belongsTo('App\Models\Companies','fkcompany');
+}
+
+public function Products(){
+  return $this->belongsTo('App\Models\Products','itemsold');
+}
+ 
+
 }
